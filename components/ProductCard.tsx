@@ -9,7 +9,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-    const whatsappNumber = "9477xxxxxxx"; // Replace with actual number
+    const whatsappNumber = "94768561837"; // Replace with actual number
     const message = encodeURIComponent(`Hi TD Cake & Bake! I would like to order the "${product.title}". Is it available?`);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 

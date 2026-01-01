@@ -42,28 +42,40 @@ export default function ProductGallery() {
     return (
         <section id="gallery" className="py-20 bg-white">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+                >
                     <h2 className="text-4xl md:text-5xl font-bold text-brown mb-4">Our Sweet Creations</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">
                         Explore our wide range of delicious cakes tailored for every occasion.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Filter Buttons */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex flex-wrap justify-center gap-3 mb-12"
+                >
                     {CATEGORIES.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
                             className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${filter === cat
-                                    ? 'bg-brown text-white shadow-lg scale-105'
-                                    : 'bg-cream text-brown hover:bg-gold/20'
+                                ? 'bg-brown text-white shadow-lg scale-105'
+                                : 'bg-cream text-brown hover:bg-gold/20'
                                 }`}
                         >
                             {cat}
                         </button>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Product Grid */}
                 {loading ? (
@@ -77,7 +89,7 @@ export default function ProductGallery() {
                     >
                         <AnimatePresence>
                             {filteredProducts.map((product) => (
-                                <ProductCard key={product._id as string} product={product} />
+                                <ProductCard key={String(product._id)} product={product} />
                             ))}
                         </AnimatePresence>
                     </motion.div>
