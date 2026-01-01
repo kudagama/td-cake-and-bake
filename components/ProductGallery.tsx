@@ -20,14 +20,20 @@ export default function ProductGallery() {
     const [filter, setFilter] = useState('All');
     const [loading, setLoading] = useState(true);
 
+    const [error, setError] = useState('');
+
     useEffect(() => {
         async function fetchProducts() {
             try {
                 const res = await fetch('/api/products');
+                if (!res.ok) {
+                    throw new Error('Failed to fetch cakes. Please refresh or try again later.');
+                }
                 const data = await res.json();
                 setProducts(data);
             } catch (error) {
                 console.error("Failed to fetch products:", error);
+                setError('Unable to load our delicious cakes properly. Please check your connection.');
             } finally {
                 setLoading(false);
             }
@@ -78,7 +84,17 @@ export default function ProductGallery() {
                 </motion.div>
 
                 {/* Product Grid */}
-                {loading ? (
+                {error ? (
+                    <div className="text-center py-12">
+                        <p className="text-red-500 mb-4">{error}</p>
+                        <button
+                            onClick={() => window.location.reload()}
+                            className="text-brown hover:text-gold underline"
+                        >
+                            Try Again
+                        </button>
+                    </div>
+                ) : loading ? (
                     <div className="flex justify-center items-center h-64">
                         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brown"></div>
                     </div>
