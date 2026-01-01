@@ -19,7 +19,7 @@ export default function Hero() {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-left space-y-6"
+                    className="text-center md:text-left space-y-6"
                 >
                     <span className="inline-block px-4 py-1 rounded-full bg-gold/20 text-brown font-semibold text-sm tracking-wide">
                         Making Life Sweeter Since 2024
@@ -33,15 +33,15 @@ export default function Hero() {
                     </p>
 
                     <div className="space-y-4">
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full sm:w-auto">
                             <button
                                 onClick={scrollToGallery}
-                                className="group bg-brown text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gold hover:text-brown transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                                className="group bg-brown text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gold hover:text-brown transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl w-full sm:w-auto"
                             >
                                 Order Now
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <a href="/about" className="group bg-transparent border-2 border-brown text-brown px-8 py-4 rounded-full font-bold text-lg hover:bg-brown hover:text-white transition-all duration-300 flex items-center gap-2">
+                            <a href="/about" className="group bg-transparent border-2 border-brown text-brown px-8 py-4 rounded-full font-bold text-lg hover:bg-brown hover:text-white transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto">
                                 Our Story
                             </a>
                         </div>

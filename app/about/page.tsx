@@ -183,7 +183,7 @@ export default function AboutPage() {
                     >
                         {/* Using external placeholder for visual completeness if user hasn't provided a 3rd image */}
                         <Image
-                            src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=800&auto=format&fit=crop"
+                            src="/gallery/cake11.jpg"
                             alt="Kitchen Vibes"
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-700"

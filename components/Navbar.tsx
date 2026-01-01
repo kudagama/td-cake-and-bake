@@ -54,28 +54,62 @@ export default function Navbar() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-0 left-0 w-full bg-cream/95 backdrop-blur-md shadow-xl rounded-b-3xl p-6 pt-24 z-40 md:hidden flex flex-col gap-6 items-center border-b border-brown/5"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 bg-cream/95 backdrop-blur-xl z-40 md:hidden flex flex-col items-center justify-center p-6"
                     >
-                        <Link
-                            href="/"
-                            className="text-xl font-bold text-brown flex items-center gap-2"
-                            onClick={() => setIsOpen(false)}
+                        <motion.div
+                            className="flex flex-col gap-8 items-center w-full max-w-sm"
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
+                            variants={{
+                                open: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+                                closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+                            }}
                         >
-                            <Home size={20} /> Home
-                        </Link>
-                        <Link
-                            href="/about"
-                            className="text-xl font-bold text-brown flex items-center gap-2"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            <User size={20} /> About Us
-                        </Link>
-                        <button className="w-full bg-brown text-white py-3 rounded-xl font-bold shadow-md">
-                            Order Now
-                        </button>
+                            <motion.div variants={{ open: { y: 0, opacity: 1 }, closed: { y: 20, opacity: 0 } }}>
+                                <Link
+                                    href="/"
+                                    className="text-3xl font-bold text-brown hover:text-gold transition-colors flex items-center gap-3"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <Home size={28} /> Home
+                                </Link>
+                            </motion.div>
+
+                            <motion.div variants={{ open: { y: 0, opacity: 1 }, closed: { y: 20, opacity: 0 } }}>
+                                <Link
+                                    href="/gallery"
+                                    className="text-3xl font-bold text-brown hover:text-gold transition-colors flex items-center gap-3"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <span className="text-xs border border-brown/30 px-2 py-1 rounded-full uppercase tracking-widest">New</span>
+                                    Gallery
+                                </Link>
+                            </motion.div>
+
+                            <motion.div variants={{ open: { y: 0, opacity: 1 }, closed: { y: 20, opacity: 0 } }}>
+                                <Link
+                                    href="/about"
+                                    className="text-3xl font-bold text-brown hover:text-gold transition-colors flex items-center gap-3"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <User size={28} /> About Us
+                                </Link>
+                            </motion.div>
+
+                            <motion.div
+                                variants={{ open: { y: 0, opacity: 1 }, closed: { y: 20, opacity: 0 } }}
+                                className="w-full pt-8"
+                            >
+                                <button className="w-full bg-brown text-white py-4 rounded-2xl text-xl font-bold shadow-xl active:scale-95 transition-all">
+                                    Order Now
+                                </button>
+                            </motion.div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

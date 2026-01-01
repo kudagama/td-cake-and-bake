@@ -67,13 +67,13 @@ export default function ProductGallery() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex flex-wrap justify-center gap-3 mb-12"
+                    className="flex overflow-x-auto pb-4 gap-3 snap-x [&::-webkit-scrollbar]:hidden -mx-4 px-6 md:mx-0 md:px-0 md:flex-wrap md:justify-center md:pb-0 mb-8 md:mb-12"
                 >
                     {CATEGORIES.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
-                            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${filter === cat
+                            className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 whitespace-nowrap flex-none snap-start ${filter === cat
                                 ? 'bg-brown text-white shadow-lg scale-105'
                                 : 'bg-cream text-brown hover:bg-gold/20'
                                 }`}
